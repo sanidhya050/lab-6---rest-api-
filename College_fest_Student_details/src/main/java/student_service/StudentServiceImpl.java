@@ -10,33 +10,30 @@ import student_entity.Student;
 public class StudentServiceImpl  implements StudentService{
 	
 	@Autowired
-	private StudentRepository bookRepository;
+	private StudentRepository StudentRepository;
 
 	@Override
 	public List<Student> FindAll() {
-		 return bookRepository.findAll();
+		
+		 return StudentRepository.findAll();
 	}
 
 	@Override
-	public void save(Student theBook) {
-		 bookRepository.save(theBook);
+	public void save(Student theStudent) {
+		 StudentRepository.save(theStudent);
 		
 	}
 
-	@Override
-	public void DeleteById(int id) {
-		bookRepository.deleteById(id);
-		
-	}
 
 	@Override
-	public Student findById(int id) {
-		Student book = bookRepository.findById(id).get();
-		
-		if(book == null)
-			throw new RuntimeException ("Did not find th book id " +id);
-		else 
-			return book;
+	public Student findById( long theId) {
+		Student Student = StudentRepository.findById(theId).get();
+	}	
+
+
+	@Override
+	public void DeleteById(long theId) {
+		StudentRepository.deleteById(theId);
 		
 	}
 	
